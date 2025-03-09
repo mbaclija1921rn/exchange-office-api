@@ -31,7 +31,7 @@ def call_exchanges_api():
     ok = False
     retries = 0
     max_retry = 4 
-    while not ok or retries >= max_retry:
+    while not ok and retries < max_retry:
         response = requests.get(url)
         ok = response.status_code == 200
         if not ok:
