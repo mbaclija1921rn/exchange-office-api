@@ -52,7 +52,7 @@ def make_exchange_table(api_response):
     next_update_iso_time = utc_time.isoformat()
 
     neutral_rates = {currency : api_response['conversion_rates'][currency] for currency in currencies}
-    exchanges = {currency: {'Base': currency, 'Quote': 'RSD', 'Buy': 1/rate * (1 + commission), 'Neutral': 1/rate, 'Sell': 1/rate * (1 - commission)}
+    exchanges = {currency: {'Base': currency, 'Quote': 'RSD', 'Buy': 1/rate * (1 - commission), 'Neutral': 1/rate, 'Sell': 1/rate * (1 + commission)}
         for currency, rate in neutral_rates.items()}
 
     table = json.dumps({
